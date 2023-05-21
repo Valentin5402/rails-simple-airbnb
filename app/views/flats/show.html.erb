@@ -1,0 +1,27 @@
+<%# ??? Pourquoi pas tout le h2 sur la même ligne
+contrairement aux .html-safe ??? %>
+
+<%# Et là ça me fait une trace entre mes icônes... %>
+
+<h2 class="my-3">
+  <%= @flat.name %>
+  <%= link_to edit_flat_path do %>
+    <div class="text-dark fs-5 d-inline-block">
+      <i class="fa-solid fa-pen"></i>
+    </div>
+  <% end %>
+  <%= link_to flat_path(@flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+    <div class="text-dark fs-5 d-inline-block">
+      <i class="fa-solid fa-trash-can"></i>
+    </div>
+  <% end %>
+</h2>
+
+<img src=<%= @flat.picture_url %> class="img-fluid w-50 mb-2" alt="Nice house">
+
+<div class="mb-2">
+  <p><i class="fa-solid fa-map-location-dot"></i> <%= @flat.address %></p>
+  <p><%= @flat.description %></p>
+  <p><strong><%= @flat.price_per_night %>€</strong></p>
+  <p>Max <strong><%= @flat.number_of_guests %></strong> guests</p>
+</div>

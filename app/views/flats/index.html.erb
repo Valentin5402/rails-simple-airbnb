@@ -1,0 +1,33 @@
+<%# Impossible d'espacer correctement
+les cards malgré toutes les tentatives... (col, grid...)
+... Comment faire ??? %>
+
+<%# J'y comprends rien au comportement de row... %>
+
+<%# ??? Pourquoi cartes JAMAIS alignées avec titre ??? %>
+
+<%# card-deck %>
+
+<h1 class="my-3">Flats</h1>
+
+<div class="row row-cols-4 card-group">
+  <% @flats.each do |flat| %>
+  <article class="card">
+    <img src=<%= flat.picture_url %> class="card-img-top" alt="Nice house">
+    <div class="card-body">
+      <strong class="fs-5"> <%= flat.name %></strong>
+      <br>
+      <i class="fa-solid fa-map-location-dot"></i> <%= flat.address %>
+      <br>
+      <strong><%= flat.price_per_night %>€</strong>
+      <br>
+      <strong><i class="fa-solid fa-person"></i> <%= flat.number_of_guests %></strong>
+    </div>
+    <div class="card-footer">
+      <%= link_to "More info", flat_path(flat), class: "link-primary" %>
+      <%= link_to "Edit", edit_flat_path(flat), class: "link-warning" %>
+      <%= link_to "Remove", flat_path(flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "link-danger" %>
+    </div>
+  </article>
+  <% end %>
+</div>
